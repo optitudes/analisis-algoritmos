@@ -15,4 +15,5 @@ public interface PriceDataRepository extends JpaRepository<PriceData, Long> {
     Optional<PriceData> findByActiveAndDate(Active active, LocalDate date);
     List<PriceData> findByActive(Active active);
     List<PriceData> findByActiveIdOrderByDateAsc(Long activeId);
+    void deleteByActive(Active active);
 }

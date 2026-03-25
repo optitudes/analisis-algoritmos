@@ -35,7 +35,7 @@ public class DataInitializer {
                     new Active("Grupo Aeroportuario del Pacifico", "PAC"),
                     new Active("Fomento Economico Mexicano", "FMX"),
                     new Active("Coca-Cola FEMSA", "KOF"),
-                    new Active("Gruma", "GMK")
+                    new Active("Gruma", "GRUMAB.MX")
                 );
                 repository.saveAll(actives);
             }
