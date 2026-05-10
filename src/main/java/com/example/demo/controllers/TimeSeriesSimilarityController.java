@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.CosineSimilarityResultDTO;
+import com.example.demo.dto.DTWResoultDTO;
 import com.example.demo.dto.EuclideanDistanceResoultDTO;
 import com.example.demo.dto.PearsonCorrelationResoultDTO;
 import com.example.demo.dto.PriceDataProjection;
@@ -48,10 +50,16 @@ public class TimeSeriesSimilarityController {
 
         PearsonCorrelationResoultDTO pearsonCorrelationResoult = timeSeriesSimilarityServiceImpl.getPearsonCorrelation(firstActivePriceData, secondActivePriceData);
         EuclideanDistanceResoultDTO euclideanDistanceResoultDTO = timeSeriesSimilarityServiceImpl.getEuclideanDistanceList(firstActivePriceData, secondActivePriceData);
+        DTWResoultDTO dtwResoult = timeSeriesSimilarityServiceImpl.getDTW(firstActivePriceData, secondActivePriceData);
+        CosineSimilarityResultDTO cosineSimilarityResultDTO = timeSeriesSimilarityServiceImpl.getCosineSimilarity(firstActivePriceData, secondActivePriceData);
 
         return ResponseEntity.ok(Map.of(
-            "pearson", pearsonCorrelationResoult,
-            "euclidean", euclideanDistanceResoultDTO
+            "pearson",               pearsonCorrelationResoult,
+            "euclidean",             euclideanDistanceResoultDTO,
+            "dtw",                   dtwResoult,
+            "cosine",                cosineSimilarityResultDTO,
+            "firstActivePriceData",  firstActivePriceData,
+            "secondActivePriceData", secondActivePriceData
         ));
     }
 }
