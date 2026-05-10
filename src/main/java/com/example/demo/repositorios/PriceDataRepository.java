@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PriceDataRepository extends JpaRepository<PriceData, Long> {
+public interface PriceDataRepository extends JpaRepository<PriceData, Long>, PriceDataRepositoryCustom {
     List<PriceData> findByActiveOrderByDateDesc(Active active);
     List<PriceData> findByActiveAndDateBetweenOrderByDateAsc(Active active, LocalDate startDate, LocalDate endDate);
     Optional<PriceData> findByActiveAndDate(Active active, LocalDate date);
