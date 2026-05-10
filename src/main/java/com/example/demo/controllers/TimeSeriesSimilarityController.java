@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.EuclideanDistanceResoultDTO;
 import com.example.demo.dto.PearsonCorrelationResoultDTO;
 import com.example.demo.dto.PriceDataProjection;
 import com.example.demo.entidades.Active;
@@ -45,10 +46,12 @@ public class TimeSeriesSimilarityController {
         List<PriceDataProjection> secondActivePriceData = priceDataRepository
             .fetchByActiveIdAndColumn(secondActiveId, field);
 
-        PearsonCorrelationResoultDTO pearsonCorrelationResoult= timeSeriesSimilarityServiceImpl.getPearsonCorrelation(firstActivePriceData, secondActivePriceData);
+        PearsonCorrelationResoultDTO pearsonCorrelationResoult = timeSeriesSimilarityServiceImpl.getPearsonCorrelation(firstActivePriceData, secondActivePriceData);
+        EuclideanDistanceResoultDTO euclideanDistanceResoultDTO = timeSeriesSimilarityServiceImpl.getEuclideanDistanceList(firstActivePriceData, secondActivePriceData);
 
         return ResponseEntity.ok(Map.of(
-            "pearson", pearsonCorrelationResoult
+            "pearson", pearsonCorrelationResoult,
+            "euclidean", euclideanDistanceResoultDTO
         ));
     }
 }
